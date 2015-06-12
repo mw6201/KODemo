@@ -14,6 +14,9 @@
 		C268C5DD1B2AFE9200E191DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C268C5DC1B2AFE9200E191DA /* Images.xcassets */; };
 		C268C5E01B2AFE9200E191DA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C268C5DE1B2AFE9200E191DA /* LaunchScreen.xib */; };
 		C268C5EC1B2AFE9200E191DA /* KODemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5EB1B2AFE9200E191DA /* KODemoTests.swift */; };
+		C268C5F61B2B0E1600E191DA /* MasterViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */; };
+		C268C5F81B2B103000E191DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F71B2B103000E191DA /* DetailsViewController.swift */; };
+		C268C5FA1B2B140A00E191DA /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F91B2B140A00E191DA /* Monster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		C268C5E51B2AFE9200E191DA /* KODemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KODemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C268C5EA1B2AFE9200E191DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C268C5EB1B2AFE9200E191DA /* KODemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KODemoTests.swift; sourceTree = "<group>"; };
+		C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		C268C5F71B2B103000E191DA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		C268C5F91B2B140A00E191DA /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 				C268C5CF1B2AFE9200E191DA /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		C268C5CF1B2AFE9200E191DA /* Products */ = {
 			isa = PBXGroup;
@@ -86,6 +93,9 @@
 				C268C5DC1B2AFE9200E191DA /* Images.xcassets */,
 				C268C5DE1B2AFE9200E191DA /* LaunchScreen.xib */,
 				C268C5D11B2AFE9200E191DA /* Supporting Files */,
+				C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */,
+				C268C5F71B2B103000E191DA /* DetailsViewController.swift */,
+				C268C5F91B2B140A00E191DA /* Monster.swift */,
 			);
 			path = KODemo;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 				TargetAttributes = {
 					C268C5CD1B2AFE9200E191DA = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = S36559RYN2;
 					};
 					C268C5E41B2AFE9200E191DA = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -217,7 +228,10 @@
 			files = (
 				C268C5D81B2AFE9200E191DA /* DetailViewController.swift in Sources */,
 				C268C5D61B2AFE9200E191DA /* MasterViewController.swift in Sources */,
+				C268C5F61B2B0E1600E191DA /* MasterViewControllerTableViewController.swift in Sources */,
 				C268C5D41B2AFE9200E191DA /* AppDelegate.swift in Sources */,
+				C268C5FA1B2B140A00E191DA /* Monster.swift in Sources */,
+				C268C5F81B2B103000E191DA /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +360,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KODemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -356,9 +373,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KODemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
