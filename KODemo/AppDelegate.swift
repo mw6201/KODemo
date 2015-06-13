@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         detailViewController.monster = firstMonster
         
         masterViewController.delegate = detailViewController
-        
+        //
         return true
     }
 
