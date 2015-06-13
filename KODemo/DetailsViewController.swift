@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UICollectionViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -22,10 +22,35 @@ class DetailsViewController: UIViewController {
     }
     
     func refreshUI() {
-        nameLabel?.text = monster.name
+        /*nameLabel?.text = monster.name
         descriptionLabel?.text = monster.description
         iconImageView?.image = UIImage(named: monster.iconName)
-        weaponImageView?.image = monster.weaponImage()
+        weaponImageView?.image = monster.weaponImage() */
+        
+        
+    }
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        println("cellForItemAtIndexPath \(indexPath)")
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
+        
+        let label = cell.contentView.subviews[0] as! UILabel
+        
+        label.text = "\(indexPath.row) \(indexPath.section) ";
+        
+        return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        println("numberOfItemsInSection \(section)")
+        
+        return 2
     }
     
     override func viewDidLoad() {
@@ -33,7 +58,7 @@ class DetailsViewController: UIViewController {
 
         refreshUI()
         
-        getData(self)
+        //getData(self)
         
         // Do any additional setup after loading the view.
     }
