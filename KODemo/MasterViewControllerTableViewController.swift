@@ -82,6 +82,13 @@ class MasterViewControllerTableViewController: UITableViewController {
         if let detailViewController = self.delegate as? DetailsViewController {
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
+        
+        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+        
+        if _kc.User_Token != "" {
+         _kc.GetTransportStatusList()
+        }
+        
     }
 
     /*

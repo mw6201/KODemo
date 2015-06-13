@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C201C1DA1B2C301E00F2BB8D /* KOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201C1D91B2C301E00F2BB8D /* KOClient.swift */; };
 		C268C5D41B2AFE9200E191DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5D31B2AFE9200E191DA /* AppDelegate.swift */; };
 		C268C5D61B2AFE9200E191DA /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5D51B2AFE9200E191DA /* MasterViewController.swift */; };
 		C268C5D81B2AFE9200E191DA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5D71B2AFE9200E191DA /* DetailViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C201C1D91B2C301E00F2BB8D /* KOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOClient.swift; sourceTree = "<group>"; };
 		C268C5CE1B2AFE9200E191DA /* KODemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KODemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C268C5D21B2AFE9200E191DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C268C5D31B2AFE9200E191DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */,
 				C268C5F71B2B103000E191DA /* DetailsViewController.swift */,
 				C268C5F91B2B140A00E191DA /* Monster.swift */,
+				C201C1D91B2C301E00F2BB8D /* KOClient.swift */,
 			);
 			path = KODemo;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C268C5D81B2AFE9200E191DA /* DetailViewController.swift in Sources */,
+				C201C1DA1B2C301E00F2BB8D /* KOClient.swift in Sources */,
 				C268C5D61B2AFE9200E191DA /* MasterViewController.swift in Sources */,
 				C268C5F61B2B0E1600E191DA /* MasterViewControllerTableViewController.swift in Sources */,
 				C268C5D41B2AFE9200E191DA /* AppDelegate.swift in Sources */,
@@ -435,6 +439,7 @@
 				C268C5F11B2AFE9200E191DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C268C5F21B2AFE9200E191DA /* Build configuration list for PBXNativeTarget "KODemoTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +448,7 @@
 				C268C5F41B2AFE9200E191DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

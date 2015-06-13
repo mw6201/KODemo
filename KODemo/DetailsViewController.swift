@@ -32,6 +32,9 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         refreshUI()
+        
+        getData(self)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -41,6 +44,15 @@ class DetailsViewController: UIViewController {
     }
     
 
+    func getData(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+            _kc.Login()
+            
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
