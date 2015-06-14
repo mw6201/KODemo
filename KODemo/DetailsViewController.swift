@@ -31,7 +31,7 @@ class DetailsViewController: UICollectionViewController {
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -50,7 +50,7 @@ class DetailsViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("numberOfItemsInSection \(section)")
         
-        return 2
+        return 3
     }
     
     override func viewDidLoad() {
