@@ -45,7 +45,21 @@ class DetailsViewController: UICollectionViewController {
         
         var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
         
-        label.text = "\(indexPath.section) \(indexPath.row) \(_kc.TransportStatusList[indexPath.section].allKeys[indexPath.row])";
+        var columnname = _kc.TransportStatusList[indexPath.section].allKeys[indexPath.row] as? String
+        
+        var ovalue: AnyObject? = _kc.TransportStatusList[indexPath.section].valueForKey(columnname!)
+        
+        var value: String = ""
+        
+        if let tmp = ovalue as? String {
+            value = ovalue as! String
+        }
+        
+        if let tmp = ovalue as? NSInteger {
+            value = String(ovalue as! NSInteger)
+        }
+        
+        label.text = value;
         
         println(label.text)
         

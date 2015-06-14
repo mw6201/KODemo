@@ -64,7 +64,8 @@ class KOClient {
                 // For this example just spit out the first item "event" entry
                 var rowData: NSDictionary = results[0] as! NSDictionary
                 var data = rowData["TransportStatus_Code"] as! NSInteger;
-                println("Status \(data) out")
+                var data1 = rowData["Order_InternNumber"] as! NSString;
+                println("Status \(data) \(data1) out")
             } else {
                 println("No rows returned")
             }
