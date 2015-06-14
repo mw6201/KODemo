@@ -16,6 +16,8 @@ class KOClient {
     
     var User_Token = ""
  
+    var TransportStatusList = [NSDictionary]()
+    
     func GetTransportStatusList() {
     
     var urlDataPath = urlPath + "/Transports/GetTransportStatusList?startrow=1&maxrowcount=100"
@@ -55,6 +57,8 @@ class KOClient {
             }
             
             println("\(results.count) JSON rows returned and parsed into an array")
+            
+            self.TransportStatusList = results as! [(NSDictionary)]
             
             if (results.count != 0) {
                 // For this example just spit out the first item "event" entry

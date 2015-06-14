@@ -77,18 +77,18 @@ class MasterViewControllerTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+        
+        if _kc.User_Token != "" {
+            _kc.GetTransportStatusList()
+        }
+        
         let selectedMonster = self.monsters[indexPath.row]
         self.delegate?.monsterSelected(selectedMonster)
         if let detailViewController = self.delegate as? DetailsViewController {
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
-        
-        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
-        
-        if _kc.User_Token != "" {
-         _kc.GetTransportStatusList()
-        }
-        
     }
 
     /*

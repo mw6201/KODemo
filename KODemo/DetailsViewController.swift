@@ -15,6 +15,8 @@ class DetailsViewController: UICollectionViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var weaponImageView: UIImageView!
     
+    //@IBOutlet var collectionView: UICollectionView?
+    
     var monster: Monster! {
         didSet (newMonster) {
             self.refreshUI()
@@ -31,18 +33,21 @@ class DetailsViewController: UICollectionViewController {
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+        return _kc.TransportStatusList.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        println("cellForItemAtIndexPath \(indexPath)")
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
         
         let label = cell.contentView.subviews[0] as! UILabel
         
-        label.text = "\(indexPath.row) \(indexPath.section) ";
+        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+        
+        label.text = "\(indexPath.section) \(indexPath.row) \(_kc.TransportStatusList[indexPath.section].allKeys[indexPath.row])";
+        
+        println(label.text)
         
         return cell
     }
@@ -50,15 +55,29 @@ class DetailsViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println("numberOfItemsInSection \(section)")
         
-        return 3
+        var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
+        
+        return _kc.TransportStatusList[0].count
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 90, height: 90)
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView!.dataSource = self
+        collectionView!.delegate = self
+        collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        collectionView!.backgroundColor = UIColor.whiteColor()
+        self.view.addSubview(collectionView!)
+        */
+        
         refreshUI()
         
-        //getData(self)
+        getData(self)
         
         // Do any additional setup after loading the view.
     }
