@@ -18,6 +18,7 @@
 		C268C5F61B2B0E1600E191DA /* MasterViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */; };
 		C268C5F81B2B103000E191DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F71B2B103000E191DA /* DetailsViewController.swift */; };
 		C268C5FA1B2B140A00E191DA /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F91B2B140A00E191DA /* Monster.swift */; };
+		CECBB1451B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBB1441B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTableViewController.swift; sourceTree = "<group>"; };
 		C268C5F71B2B103000E191DA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		C268C5F91B2B140A00E191DA /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		CECBB1441B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsUICollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				C268C5F71B2B103000E191DA /* DetailsViewController.swift */,
 				C268C5F91B2B140A00E191DA /* Monster.swift */,
 				C201C1D91B2C301E00F2BB8D /* KOClient.swift */,
+				CECBB1441B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift */,
 			);
 			path = KODemo;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				C268C5D41B2AFE9200E191DA /* AppDelegate.swift in Sources */,
 				C268C5FA1B2B140A00E191DA /* Monster.swift in Sources */,
 				C268C5F81B2B103000E191DA /* DetailsViewController.swift in Sources */,
+				CECBB1451B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
