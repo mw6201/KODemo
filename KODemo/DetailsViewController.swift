@@ -41,8 +41,10 @@ class DetailsViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
         
+        var _x = indexPath.row * 150;
+        
         cell.backgroundColor = UIColor.brownColor()
-        cell.bounds = CGRect(x: 0,y: 0,width: 150,height: 20)
+        cell.bounds = CGRect(x: _x,y: 0,width: 150,height: 20)
         
         let label = cell.contentView.subviews[0] as! UILabel
         
