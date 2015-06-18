@@ -41,12 +41,19 @@ class DetailsViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
         
-        var _x = indexPath.row * 150;
+        //var _x = indexPath.row * 150;
         
-        cell.backgroundColor = UIColor.brownColor()
-        cell.bounds = CGRect(x: _x,y: 0,width: 150,height: 20)
+        //cell.backgroundColor = UIColor.brownColor()
+        //cell.bounds = CGRect(x: 0,y: 0,width: 150,height: 20)
+        
+        cell.frame.size.width = 250.0;
+        cell.frame.size.height = 50.0;
+        
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderWidth = 0.5
         
         let label = cell.contentView.subviews[0] as! UILabel
+        label.font = UIFont(name: label.font.fontName, size: 8);
         
         var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
         
@@ -93,6 +100,13 @@ class DetailsViewController: UICollectionViewController {
         collectionView!.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(collectionView!)
         */
+        
+        let layout = (self.collectionViewLayout as! DetailsUICollectionViewLayout)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+
+        //self.si CGSize(width: 1024, height: 480)
         
         refreshUI()
         
