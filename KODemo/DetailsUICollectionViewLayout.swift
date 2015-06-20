@@ -39,6 +39,7 @@ class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
     }
     */
     
+    /*
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         
         var attributesToReturn: [UICollectionViewLayoutAttributes] = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
@@ -53,6 +54,7 @@ class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
         }
         return attributesToReturn
     }
+    */
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         
