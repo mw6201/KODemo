@@ -49,7 +49,7 @@ class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
             let numberOfItems = self.collectionView!.numberOfItemsInSection(section) // 3
             
             var xOffset = self.horizontalInset
-            yOffset = headerHeight * CGFloat(section) + headerHeight
+            yOffset = headerHeight * CGFloat(section) + headerHeight + CGFloat(2)
             
             for var item = 0; item < numberOfItems; item++ {
                 
@@ -72,7 +72,7 @@ class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
                 println("Section: \(section) Item: \(item) Row: \(indexPath.row)")
                 
                 itemSize.width = 150
-                itemSize.height = 20
+                itemSize.height = headerHeight
                 
                 /*
                 if indexPath.row % 8 == 0 && indexPath.row > 0 {
@@ -107,7 +107,7 @@ class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
         
         println("Size: width \(_width) height \(_height)")
         
-        _contentSize = CGSizeMake(_width, _height) // 11
+        _contentSize = CGSizeMake(1024, _height) // 11
         
     }
     

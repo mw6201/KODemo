@@ -18,6 +18,7 @@
 		C268C5F61B2B0E1600E191DA /* MasterViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */; };
 		C268C5F81B2B103000E191DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F71B2B103000E191DA /* DetailsViewController.swift */; };
 		C268C5FA1B2B140A00E191DA /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C268C5F91B2B140A00E191DA /* Monster.swift */; };
+		CE22B6C71B37118F00597483 /* GalleryItemCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22B6C61B37118F00597483 /* GalleryItemCommentView.xib */; };
 		CECBB1451B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBB1441B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		C268C5F51B2B0E1600E191DA /* MasterViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTableViewController.swift; sourceTree = "<group>"; };
 		C268C5F71B2B103000E191DA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		C268C5F91B2B140A00E191DA /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		CE22B6C61B37118F00597483 /* GalleryItemCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryItemCommentView.xib; sourceTree = "<group>"; };
 		CECBB1441B31F2ED00E0E301 /* DetailsUICollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsUICollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		C268C5D01B2AFE9200E191DA /* KODemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE22B6C61B37118F00597483 /* GalleryItemCommentView.xib */,
 				C268C5D31B2AFE9200E191DA /* AppDelegate.swift */,
 				C268C5D51B2AFE9200E191DA /* MasterViewController.swift */,
 				C268C5D71B2AFE9200E191DA /* DetailViewController.swift */,
@@ -212,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE22B6C71B37118F00597483 /* GalleryItemCommentView.xib in Resources */,
 				C268C5DB1B2AFE9200E191DA /* Main.storyboard in Resources */,
 				C268C5E01B2AFE9200E191DA /* LaunchScreen.xib in Resources */,
 				C268C5DD1B2AFE9200E191DA /* Images.xcassets in Resources */,

@@ -15,7 +15,7 @@ class DetailsViewController: UICollectionViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var weaponImageView: UIImageView!
     
-    //@IBOutlet var collectionView: UICollectionView?
+    @IBOutlet var _collectionView: UICollectionView!
     
     var monster: Monster! {
         didSet (newMonster) {
@@ -119,6 +119,9 @@ class DetailsViewController: UICollectionViewController {
         //self.si CGSize(width: 1024, height: 480)
         
         //refreshUI()
+        
+        let nib = UINib(nibName: "GalleryItemCommentView", bundle: nil)
+        _collectionView.registerNib(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "GalleryItemCommentView")
         
         LoginKO(self)
         

@@ -52,6 +52,9 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
+                    <connections>
+                        <outlet property="_collectionView" destination="2yX-dn-deQ" id="jc4-0v-YDG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ha-8L-kKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
