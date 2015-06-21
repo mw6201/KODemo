@@ -10,105 +10,166 @@ import UIKit
 
 class DetailsUICollectionViewLayout: UICollectionViewFlowLayout {
 
-    required init(coder aDecoder: NSCoder) {
-        //fatalError("init(coder:) has not been implemented")
-        
-        super.init(coder: aDecoder)
-        
-    //    self.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-    }
+    var horizontalInset = 0.0 as CGFloat
+    var verticalInset = 0.0 as CGFloat
     
-    /*
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return true
-    }
-    */
+    var minimumItemWidth = 0.0 as CGFloat
+    var maximumItemWidth = 0.0 as CGFloat
+    var itemHeight = 0.0 as CGFloat
     
-    /*
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        var attributesToReturn:[UICollectionViewLayoutAttributes] = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
+    var _layoutAttributes = Dictionary<String, UICollectionViewLayoutAttributes>()
+    var _contentSize = CGSizeZero
+    
+    // MARK: -
+    // MARK: Layout
+    //
+    
+    override func prepareLayout() {
+        super.prepareLayout()
         
-        for  attributes in attributesToReturn {
+        _layoutAttributes = Dictionary<String, UICollectionViewLayoutAttributes>() // 1
+        
+        let path = NSIndexPath(forItem: 0, inSection: 0)
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withIndexPath: path)
+        
+        //let headerHeight = CGFloat(self.itemHeight / 4)
+        let headerHeight = CGFloat(20)
+        
+        attributes.frame = CGRectMake(0, 0, self.collectionView!.frame.size.width, headerHeight)
+        
+        let headerKey = layoutKeyForHeaderAtIndexPath(path)
+        _layoutAttributes[headerKey] = attributes // 2
+        
+        let numberOfSections = self.collectionView!.numberOfSections() // 3
+        
+        var yOffset = headerHeight
+        
+        for var section = 0; section < numberOfSections; section++ {
             
-            if let elemedKind = attributes.representedElementKind {
-                var indexPath: NSIndexPath  = attributes.indexPath;
-                attributes.frame = self.layoutAttributesForItemAtIndexPath(indexPath).frame
-            }
-        }
-        return attributesToReturn;
-    }
-    */
-    
-    /*
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        
-        var attributesToReturn: [UICollectionViewLayoutAttributes] = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
-        
-        for (index, attributes) in enumerate(attributesToReturn) {
+            let numberOfItems = self.collectionView!.numberOfItemsInSection(section) // 3
             
-            if attributes.representedElementKind != nil {
+            var xOffset = self.horizontalInset
+            yOffset = headerHeight * CGFloat(section) + headerHeight
+            
+            for var item = 0; item < numberOfItems; item++ {
                 
-                var indexPath: NSIndexPath  = attributes.indexPath
-                attributes.frame = layoutAttributesForItemAtIndexPath(indexPath).frame
+                let indexPath : NSIndexPath = NSIndexPath(forItem: item, inSection: section)
+                let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath) // 4
+                
+                var itemSize = CGSizeZero
+                var increaseRow = false
+                
+                /*
+                if self.collectionView!.frame.size.width - xOffset > self.maximumItemWidth * 1.5 {
+                itemSize = randomItemSize() // 5
+                } else {
+                itemSize.width = self.collectionView!.frame.size.width - xOffset - self.horizontalInset
+                itemSize.height = self.itemHeight
+                increaseRow = true // 6
+                }
+                */
+                
+                println("Section: \(section) Item: \(item) Row: \(indexPath.row)")
+                
+                itemSize.width = 150
+                itemSize.height = 20
+                
+                /*
+                if indexPath.row % 8 == 0 && indexPath.row > 0 {
+                    increaseRow = true
+                    println("Next line")
+                }
+                */
+                
+                attributes.frame = CGRectIntegral(CGRectMake(xOffset, yOffset, itemSize.width, itemSize.height))
+                let key = layoutKeyForIndexPath(indexPath)
+                _layoutAttributes[key] = attributes // 7
+                
+                xOffset += itemSize.width
+                xOffset += self.horizontalInset // 8
+                
+                if increaseRow
+                    && !(item == numberOfItems - 1 && section == numberOfSections - 1) { // 9
+                        
+                        yOffset += self.verticalInset
+                        yOffset += self.itemHeight
+                        xOffset = self.horizontalInset
+                        
+                }
             }
+            
         }
-        return attributesToReturn
+        
+        yOffset += self.itemHeight // 10
+        
+        var _width = self.collectionView!.frame.size.width
+        var _height = yOffset + self.verticalInset
+        
+        println("Size: width \(_width) height \(_height)")
+        
+        _contentSize = CGSizeMake(_width, _height) // 11
+        
     }
-    */
+    
+    func randomItemSize() -> CGSize {
+        return CGSizeMake(getRandomWidth(), self.itemHeight)
+    }
+    
+    func getRandomWidth() -> CGFloat {
+        let range = UInt32(self.maximumItemWidth - self.minimumItemWidth + 1)
+        let random = Float(arc4random_uniform(range))
+        return CGFloat(self.minimumItemWidth) + CGFloat(random)
+    }
+    
+    // MARK: -
+    // MARK: Helpers
+    
+    func layoutKeyForIndexPath(indexPath : NSIndexPath) -> String {
+        return "\(indexPath.section)_\(indexPath.row)"
+    }
+    
+    func layoutKeyForHeaderAtIndexPath(indexPath : NSIndexPath) -> String {
+        return "s_\(indexPath.section)_\(indexPath.row)"
+    }
+    
+    // MARK: -
+    // MARK: Invalidate
+    
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return !CGSizeEqualToSize(newBounds.size, self.collectionView!.frame.size)
+    }
+    
+    // MARK: -
+    // MARK: Required methods
+    
+    override func collectionViewContentSize() -> CGSize {
+        return _contentSize
+    }
+    
+    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+        
+        let headerKey = layoutKeyForIndexPath(indexPath)
+        return _layoutAttributes[headerKey]
+    }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         
-        //        let kMaxCellSpacing: CGFloat = 30.0
-        
-        let currentItemAttributes: UICollectionViewLayoutAttributes = super.layoutAttributesForItemAtIndexPath(indexPath)
-        
-        let sectionInset: UIEdgeInsets = UIEdgeInsetsMake(50.0, 20.0, 50.0, 20.0)
-        
-        if indexPath.item == 0 { // first item of section
-            var frame: CGRect = currentItemAttributes.frame
-            frame.origin.x = sectionInset.left // first item of the section should always be left aligned
-            currentItemAttributes.frame = frame
-            return currentItemAttributes
-        }
-        
-        let previousIndexPath: NSIndexPath = NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
-        let previousFrame: CGRect = layoutAttributesForItemAtIndexPath(previousIndexPath).frame
-        let previousFrameRightPoint: CGFloat = previousFrame.origin.x + previousFrame.size.width/* + kMaxCellSpacing */
-        
-        let currentFrame: CGRect = currentItemAttributes.frame
-        let strecthedCurrentFrame: CGRect = CGRectMake(
-            0.0,
-            currentFrame.origin.y,
-            self.collectionView!.frame.size.width,
-            currentFrame.size.height)
-        
-        if !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame) { // if current item is the first item on the line
-            // the approach here is to take the current frame, left align it to the edge of the view
-            // then stretch it the width of the collection view, if it intersects with the  previous   frame then that means it
-            // is on the same line, otherwise it is on it's own new line
-            var frame: CGRect = currentItemAttributes.frame
-            frame.origin.x = sectionInset.left // first item on the line should always be left aligned
-            currentItemAttributes.frame = frame
-            return currentItemAttributes
-        }
-        
-        var frame: CGRect = currentItemAttributes.frame
-        frame.origin.x = previousFrameRightPoint
-        currentItemAttributes.frame = frame
-        return currentItemAttributes
+        let key = layoutKeyForIndexPath(indexPath)
+        return _layoutAttributes[key]
     }
     
-    override func collectionViewContentSize() -> CGSize {
-    
-        var screenSize = UIScreen.mainScreen().bounds
-        var screenWidth = screenSize.width
-        var screenHeight = screenSize.height
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         
-        println("collectionViewContentSize: w=\(screenWidth) + h=\(screenHeight) " )
+        let predicate = NSPredicate {  [unowned self] (evaluatedObject, bindings) -> Bool in
+            let layoutAttribute = self._layoutAttributes[evaluatedObject as! String]
+            return CGRectIntersectsRect(rect, layoutAttribute!.frame)
+        }
         
-        // Do any additional setup after loading the view, typically from a nib
-        //let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        //layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        return CGSize(width: 12048, height: 480)
+        let dict = _layoutAttributes as NSDictionary
+        let keys = dict.allKeys as NSArray
+        let matchingKeys = keys.filteredArrayUsingPredicate(predicate)
+        
+        return dict.objectsForKeys(matchingKeys, notFoundMarker: NSNull())
     }
+
 }

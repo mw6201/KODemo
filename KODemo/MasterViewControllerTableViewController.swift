@@ -46,7 +46,7 @@ class MasterViewControllerTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,9 +84,11 @@ class MasterViewControllerTableViewController: UITableViewController {
             _kc.GetTransportStatusList()
         }
         
-        let selectedMonster = self.monsters[indexPath.row]
-        self.delegate?.monsterSelected(selectedMonster)
+        //let selectedMonster = self.monsters[indexPath.row]
+        //self.delegate?.monsterSelected(selectedMonster)
+        
         if let detailViewController = self.delegate as? DetailsViewController {
+            //detailViewController.dismissViewControllerAnimated(true, completion: nil)
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
     }

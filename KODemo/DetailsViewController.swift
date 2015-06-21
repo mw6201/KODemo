@@ -35,6 +35,8 @@ class DetailsViewController: UICollectionViewController {
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
         return _kc.TransportStatusList.count
+        
+        //return 1
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -46,11 +48,13 @@ class DetailsViewController: UICollectionViewController {
         //cell.backgroundColor = UIColor.brownColor()
         //cell.bounds = CGRect(x: 0,y: 0,width: 150,height: 20)
         
+        /*
         cell.frame.size.width = 250.0;
         cell.frame.size.height = 50.0;
         
         cell.layer.borderColor = UIColor.blackColor().CGColor
         cell.layer.borderWidth = 0.5
+        */
         
         let label = cell.contentView.subviews[0] as! UILabel
         label.font = UIFont(name: label.font.fontName, size: 8);
@@ -83,7 +87,12 @@ class DetailsViewController: UICollectionViewController {
         
         var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
         
-        return _kc.TransportStatusList[0].count
+        if _kc.TransportStatusList.count > 0 {
+            return _kc.TransportStatusList[0].count
+        } else {
+            return 0
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -101,27 +110,35 @@ class DetailsViewController: UICollectionViewController {
         self.view.addSubview(collectionView!)
         */
         
+        /*
         let layout = (self.collectionViewLayout as! DetailsUICollectionViewLayout)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
-
+        */
         //self.si CGSize(width: 1024, height: 480)
         
-        refreshUI()
+        //refreshUI()
         
-        getData(self)
+        LoginKO(self)
         
         // Do any additional setup after loading the view.
     }
 
+    
+    override func viewDidAppear(animated: Bool) {
+        println("DetailsViewController: viewDidAppear")
+        
+        self.collectionView?.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    func getData(sender: AnyObject) {
+    func LoginKO(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue(), {
             
             var _kc = (UIApplication.sharedApplication().delegate! as! AppDelegate)._KOClient
